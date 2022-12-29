@@ -1,7 +1,7 @@
 function ListadoPacientes() {
   return (
-    <div>
-      <h1>Desde Listado de pacientes</h1>
+    <div className="w-1/2 lg:w-3/5">
+      <h1>Listado de pacientes</h1>
     </div>
   )
 }
