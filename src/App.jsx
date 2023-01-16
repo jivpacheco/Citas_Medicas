@@ -7,22 +7,21 @@ function App() {
   //antes del return es util para crear funciones, validaciones}
   // se crean la variable para almacenar en un arreglo los pacientes que se vayan ingresando en el formulario
   const [pacientes, setPacientes] = useState([]);
-
-  const toma1Valor = (valor) =>{
+  /* const valorDesdeHeader = (valor) =>{
     console.log(valor)
-
-  }
- 
-
+  }*/
 
   return (
     //esto es lo que se va a mostrar en pantalla y no se puede incluir if ni funciones, solo expresiones o ternarios
     <div className="container mx-auto mt-20">
       <Header
-       toma1Valor = {toma1Valor}
+       // valorDesdeHeader={valorDesdeHeader}
       />
       <div className="mt-12 md:flex">
-        <Formulario />
+        <Formulario
+        pacientes = {pacientes}
+        setPacientes = {setPacientes}
+        />
         <ListadoPacientes />
       </div>
     </div>

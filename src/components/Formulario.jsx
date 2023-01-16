@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 
-const Formulario = () => {
+
+const Formulario = ({pacientes, setPacientes}) => {
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
@@ -8,7 +9,7 @@ const Formulario = () => {
   const [sintomas, setSintomas] = useState('');
 
   const[error, setError] = useState(false);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     // validacion del formulario
@@ -17,7 +18,25 @@ const Formulario = () => {
       setError(true)
     } else {
       setError(false)
-      console.log('Formulario completo...')
+      //objeto de paciente
+      const objetoPaciente = {
+        nombre,
+        propietario,
+        email,
+        fecha,
+        sintomas
+      }
+      
+
+
+      setPacientes([...pacientes, objetoPaciente])
+      //console.log('Formulario completo...')
+      // reiniciar el form
+      setNombre('')
+      setPropietario('')
+      setEmail('')
+      setFecha('')
+      setSintomas('')
     }
     
   }
