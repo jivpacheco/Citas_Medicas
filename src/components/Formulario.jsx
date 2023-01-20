@@ -2,15 +2,15 @@ import { useState, useEffect } from "react"
 import Error from "./Error";
 
 
-const Formulario = ({pacientes, setPacientes}) => {
+const Formulario = ({ pacientes, setPacientes }) => {
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
   const [fecha, setFecha] = useState('');
   const [sintomas, setSintomas] = useState('');
 
-  const[error, setError] = useState(false);
-  
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // validacion del formulario
@@ -27,7 +27,7 @@ const Formulario = ({pacientes, setPacientes}) => {
         fecha,
         sintomas
       }
-      
+
 
 
       setPacientes([...pacientes, objetoPaciente])
@@ -39,7 +39,7 @@ const Formulario = ({pacientes, setPacientes}) => {
       setFecha('')
       setSintomas('')
     }
-    
+
   }
 
   return (
@@ -53,12 +53,18 @@ const Formulario = ({pacientes, setPacientes}) => {
 
       <form onSubmit={handleSubmit} className='bg-white shadow-sm rounded-lg py-10 px-5 mb-10'>
 
-        {error && 
-        <Error/>
-        /*<div className="bg-red-800 text-white text-center text-bold p-3 mb-3 uppercase rounded-md">
-           <p> Todos los campos son Obligatorios </p>
-        </div>*/
-          } 
+        {error &&
+          <Error>
+            <h1>Hola Jivpacheco</h1>
+            <p> Todos los campos son Obligatorios </p>
+          </Error>
+          // lo anterior se aplica el metodo children
+          /* enviar la informacion al hijo en Props
+          error && <Error mensaje='Todos los campos son Obligatorios'/>
+          /*<div className="bg-red-800 text-white text-center text-bold p-3 mb-3 uppercase rounded-md">
+             <p> Todos los campos son Obligatorios </p>
+          </div>*/
+        }
 
         <div className='mb-5'>
           <label htmlFor='mascota' className='block text-gray-700 uppercase font-bold'> Nombre de Mascota</label>
