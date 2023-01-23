@@ -7,6 +7,7 @@ function App() {
   //antes del return es util para crear funciones, validaciones}
   // se crean la variable para almacenar en un arreglo los pacientes que se vayan ingresando en el formulario
   const [pacientes, setPacientes] = useState([]);
+  const [paciente, setPaciente] = useState({})
   /* const valorDesdeHeader = (valor) =>{
     console.log(valor)
   }*/
@@ -21,9 +22,11 @@ function App() {
         <Formulario
         pacientes = {pacientes}
         setPacientes = {setPacientes}
+        paciente = {paciente}
         />
         <ListadoPacientes 
         pacientes = {pacientes}
+        setPaciente = {setPaciente}
         />
       </div>
     </div>

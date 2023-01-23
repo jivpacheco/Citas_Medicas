@@ -2,14 +2,26 @@ import { useState, useEffect } from "react"
 import Error from "./Error";
 
 
-const Formulario = ({ pacientes, setPacientes }) => {
+const Formulario = ({ pacientes, setPacientes, paciente}) => {
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
   const [fecha, setFecha] = useState('');
   const [sintomas, setSintomas] = useState('');
 
+  useEffect( () =>{
+    console.log(paciente)
+  },[paciente])
+
+ 
+
   const [error, setError] = useState(false);
+
+  const generarId = () => {
+    const random = Math.random().toString(36).substr(2)
+    const fecha = Date.now().toString(24)
+    return fecha + random
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +37,8 @@ const Formulario = ({ pacientes, setPacientes }) => {
         propietario,
         email,
         fecha,
-        sintomas
+        sintomas,
+        id: generarId()
       }
 
 
@@ -55,7 +68,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
 
         {error &&
           <Error>
-            <h1>Hola Jivpacheco</h1>
+            <h1>Jivpacheco dice:</h1>
             <p> Todos los campos son Obligatorios </p>
           </Error>
           // lo anterior se aplica el metodo children
