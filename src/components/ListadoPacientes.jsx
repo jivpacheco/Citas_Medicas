@@ -3,10 +3,10 @@ import Paciente from "./Paciente"
 
 
 const ListadoPacientes = ({ pacientes, setPaciente }) => {
-
+// detallar en consola cuando se crea un nuevo paciente.
   useEffect(() => {
     if (pacientes.length > 0) {
-      console.log("Nuevo Paciente")
+      //console.log("Nuevo Paciente")
     }
 
   }, [pacientes])
