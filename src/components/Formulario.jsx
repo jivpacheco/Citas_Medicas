@@ -2,18 +2,27 @@ import { useState, useEffect } from "react"
 import Error from "./Error";
 
 
-const Formulario = ({ pacientes, setPacientes, paciente}) => {
+const Formulario = ({ pacientes, setPacientes, paciente }) => {
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
   const [fecha, setFecha] = useState('');
   const [sintomas, setSintomas] = useState('');
 
-  useEffect( () =>{
-    console.log(paciente)
-  },[paciente])
 
- 
+  useEffect(() => {
+   
+    if (Object.keys(paciente).length > 0) {
+
+      setNombre(paciente.nombre)
+      setPropietario(paciente.propietario)
+      setEmail(paciente.email)
+      setFecha(paciente.fecha)
+      setSintomas(paciente.sintomas)
+    }
+  }, [paciente])
+
+
 
   const [error, setError] = useState(false);
 

@@ -1,8 +1,15 @@
-import { Fragment } from "react"
+import { Fragment, useEffect } from "react"
 import Paciente from "./Paciente"
 
 
 const ListadoPacientes = ({ pacientes, setPaciente }) => {
+
+  useEffect(() => {
+    if (pacientes.length > 0) {
+      console.log("Nuevo Paciente")
+    }
+
+  }, [pacientes])
 
   return (
 
@@ -26,7 +33,7 @@ const ListadoPacientes = ({ pacientes, setPaciente }) => {
                 <Paciente
                   key={paciente.id}
                   paciente={paciente}
-                  setPaciente = {setPaciente}
+                  setPaciente={setPaciente}
                 />
               )
             })
