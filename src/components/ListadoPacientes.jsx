@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react"
 import Paciente from "./Paciente"
 
 
-const ListadoPacientes = ({ pacientes, setPaciente }) => {
+const ListadoPacientes = ({ pacientes, setPaciente, eliminarPaciente}) => {
 // detallar en consola cuando se crea un nuevo paciente.
   useEffect(() => {
     if (pacientes.length > 0) {
@@ -34,6 +34,7 @@ const ListadoPacientes = ({ pacientes, setPaciente }) => {
                   key={paciente.id}
                   paciente={paciente}
                   setPaciente={setPaciente}
+                  eliminarPaciente = {eliminarPaciente}
                 />
               )
             })

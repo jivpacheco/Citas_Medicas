@@ -12,6 +12,11 @@ function App() {
     console.log(valor)
   }*/
 
+  // funcion para eliminar paciente
+  const eliminarPaciente = (id) =>{
+    console.log("Eliminando paciente... ", id)
+  }
+
   return (
     //esto es lo que se va a mostrar en pantalla y no se puede incluir if ni funciones, solo expresiones o ternarios
     <div className="container mx-auto mt-20">
@@ -28,6 +33,7 @@ function App() {
         <ListadoPacientes 
         pacientes = {pacientes}
         setPaciente = {setPaciente}
+        eliminarPaciente = {eliminarPaciente}
         />
       </div>
     </div>
