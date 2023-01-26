@@ -11,14 +11,24 @@ function App() {
   /* const valorDesdeHeader = (valor) =>{
     console.log(valor)
   }*/
-
   // funcion para eliminar paciente
   const eliminarPaciente = (id) =>{
    const pacientesActualizados = pacientes.filter(paciente => paciente.id !==id);
-
-   console.log(pacientesActualizados)
    setPacientes(pacientesActualizados)
   }
+
+  //configurando localStore
+  //carga solo una vez cuando el componente esta listo
+  useEffect(() =>{
+    
+    console.log("Iniciando componente")
+  },[]);
+
+  useEffect(() =>{
+    //localStore solo almacena string, se realiza conversion.
+    localStorage.setItem("pacientes", JSON.stringify(pacientes))
+
+  },[pacientes])
 
   return (
     //esto es lo que se va a mostrar en pantalla y no se puede incluir if ni funciones, solo expresiones o ternarios
