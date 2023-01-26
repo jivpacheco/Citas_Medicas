@@ -3,10 +3,13 @@ const Paciente = ({ paciente, setPaciente, eliminarPaciente }) => {
 
     const { nombre, propietario, email, fecha, sintomas, id } = paciente
 
-}
 
-const handlerEliminar = (id) => {
-    eliminarPaciente(id)
+const handleEliminar = () => {
+    const respuesta = confirm('Desea Eliminar este Paciente...')
+
+    if(respuesta){
+        eliminarPaciente(id);
+    }
 }
 
 
@@ -43,7 +46,8 @@ return (
             <button
                 type="button"
                 className="py-2 px-10 bg-red-600 hover:bg-red-800 text-white font-bold  uppercase rounded-lg"
-                onClick={() => eliminarPaciente(id)}
+              //onClick={() => eliminarPaciente(id)} // de esta forma para pasar un argument
+              onClick = {handleEliminar} // cuando se requiere realizar otras acciones
 
             >Eliminar</button>
         </div>
