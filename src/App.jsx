@@ -7,46 +7,73 @@ function App() {
   //antes del return es util para crear funciones, validaciones}
   // se crean la variable para almacenar en un arreglo los pacientes que se vayan ingresando en el formulario
   const [pacientes, setPacientes] = useState([]);
-  const [paciente, setPaciente] = useState({})
+  const [paciente, setPaciente] = useState({});
   /* const valorDesdeHeader = (valor) =>{
     console.log(valor)
   }*/
-  // funcion para eliminar paciente
-  const eliminarPaciente = (id) =>{
-   const pacientesActualizados = pacientes.filter(paciente => paciente.id !==id);
-   setPacientes(pacientesActualizados)
-  }
+  // useEffect(() => {
+  //   const obtenerLS = () => {
+  //     const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];
+  //     setPacientes(pacientesLS)
+  //   }
+  //   obtenerLS();
+  // }, []);
+
+  useEffect(()=>{
+    const obtenerLS = () =>{
+      const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];
+      setPacientes(pacientesLS)
+    }
+    obtenerLS();
+  }, [])
+  
+  useEffect(() => {
+    localStorage.setItem('pacientes', JSON.stringify( pacientes ));
+  }, [pacientes])
+
 
   //configurando localStore
-  //carga solo una vez cuando el componente esta listo
-  useEffect(() =>{
-    
-    console.log("Iniciando componente")
-  },[]);
+  //cuando es vacio se ejecuta una solo vez, detecta lo que haya en el localStorage
+  // useEffect(() => {
+  //   const obtenerLS = () => {
+  //     //convertirlo de un string a un objeto
+  //     const pacientesLS = JSON.parse(localStorage.getItem("pacientes")) ?? [];
+  //     setPacientes(pacientesLS)
+  //   }
 
-  useEffect(() =>{
-    //localStore solo almacena string, se realiza conversion.
-    localStorage.setItem("pacientes", JSON.stringify(pacientes))
+  //   obtenerLS()
+  // }, []);
 
-  },[pacientes])
+  // useEffect(() => {
+  //   //localStore solo almacena string, se realiza conversion.
+  //   localStorage.setItem("pacientes", JSON.stringify( pacientes ));
+  // }, [pacientes])
+  
 
+  // funcion para eliminar paciente
+  const eliminarPaciente = (id) => {
+    const pacientesActualizados = pacientes.filter(paciente => paciente.id !== id);
+    setPacientes(pacientesActualizados)
+  }
+
+  
   return (
     //esto es lo que se va a mostrar en pantalla y no se puede incluir if ni funciones, solo expresiones o ternarios
     <div className="container mx-auto mt-20">
       <Header
-       // valorDesdeHeader={valorDesdeHeader}
+      // valorDesdeHeader={valorDesdeHeader}
       />
       <div className="mt-12 md:flex">
         <Formulario
-        pacientes = {pacientes}
-        setPacientes = {setPacientes}
-        paciente = {paciente}
-        setPaciente = {setPaciente}
+          pacientes={pacientes}
+          setPacientes={setPacientes}
+          paciente={paciente}
+          setPaciente={setPaciente}
         />
-        <ListadoPacientes 
-        pacientes = {pacientes}
-        setPaciente = {setPaciente}
-        eliminarPaciente = {eliminarPaciente}
+        <ListadoPacientes
+          pacientes={pacientes}
+          setPaciente={setPaciente}
+          eliminarPaciente={eliminarPaciente}
         />
       </div>
     </div>
