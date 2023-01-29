@@ -20,10 +20,17 @@ function App() {
   // }, []);
 
   useEffect(()=>{
+
+    // const pacientesLS = JSON.parse(localStorage.getItem('pacientes'));
+    //   if(pacientesLS){
+    //     setPacientes(pacientesLS)
+    //   }
+
     const obtenerLS = () =>{
       const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];
       setPacientes(pacientesLS)
     }
+
     obtenerLS();
   }, [])
   
